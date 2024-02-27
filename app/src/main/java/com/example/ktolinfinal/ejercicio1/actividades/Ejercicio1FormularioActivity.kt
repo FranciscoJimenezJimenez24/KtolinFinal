@@ -4,8 +4,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import ejercicios_android.sqlite.ejercicio1.Nota
-import ejercicios_android.sqlite.ejercicio1.DataHelper
+
 
 class Ejercicio1FormularioActivity : AppCompatActivity() {
 

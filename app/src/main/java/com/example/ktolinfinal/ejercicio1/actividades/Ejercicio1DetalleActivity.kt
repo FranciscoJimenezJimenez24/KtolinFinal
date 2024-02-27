@@ -6,7 +6,6 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import ejercicios_android.sqlite.ejercicio1.DataHelper
 
 
 class Ejercicio1DetalleActivity : AppCompatActivity() {

@@ -1,4 +1,4 @@
-package ejercicios_android.sqlite.ejercicio1
+package com.example.ktolinfinal
 
 open class Nota(
     var _id:Long,

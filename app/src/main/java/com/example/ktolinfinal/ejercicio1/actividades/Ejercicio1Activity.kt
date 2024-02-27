@@ -11,8 +11,6 @@ import android.widget.ListView
 import android.widget.SimpleCursorAdapter
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import ejercicios_android.sqlite.ejercicio1.DataHelper
-import ejercicios_android.sqlite.ejercicio1.Nota
 
 class Ejercicio1Activity : AppCompatActivity() {
     private val INSERTAR_DATOS_PRUEBA = true
