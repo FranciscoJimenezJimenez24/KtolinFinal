@@ -1,4 +1,4 @@
-package com.example.runas.DBControler
+package com.example.ktolinfinal.DBControler
 
 import android.content.Context
 import androidx.room.Database

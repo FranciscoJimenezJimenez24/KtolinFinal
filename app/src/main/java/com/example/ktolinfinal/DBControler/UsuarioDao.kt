@@ -1,4 +1,4 @@
-package com.example.runas.DBControler
+package com.example.ktolinfinal.DBControler
 
 import androidx.room.Dao
 import androidx.room.Insert

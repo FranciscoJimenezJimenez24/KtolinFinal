@@ -1,4 +1,4 @@
-package com.example.runas.DBControler
+package com.example.ktolinfinal.DBControler
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

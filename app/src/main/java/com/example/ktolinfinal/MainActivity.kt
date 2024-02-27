@@ -1,9 +1,9 @@
-package com.example.runas
+package com.example.ktolinfinal
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.runas.Login.Login
+import com.example.ktolinfinal.Login.Login
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

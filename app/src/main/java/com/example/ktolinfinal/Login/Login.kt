@@ -1,4 +1,4 @@
-package com.example.runas.Login
+package com.example.ktolinfinal.Login
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -8,8 +8,9 @@ import android.widget.Button
 import android.widget.CheckBox
 import android.widget.EditText
 import android.widget.Toast
-import com.example.runas.DBControler.UsuarioDatabase
-import com.example.runas.R
+import com.example.ktolinfinal.DBControler.UsuarioDatabase
+import com.example.ktolinfinal.Ejercicio1Activity
+import com.example.ktolinfinal.R
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -54,6 +55,9 @@ class Login : AppCompatActivity() {
                     showToast("Usuario o contraseña incorrectos")
                 }
             }
+            val intent:Intent=Intent(this,Ejercicio1Activity::class.java);
+            startActivity(intent)
+
         }
 
         btnRegistro.setOnClickListener {

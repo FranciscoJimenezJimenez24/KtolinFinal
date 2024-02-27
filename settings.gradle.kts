@@ -13,6 +13,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "Runas"
+rootProject.name = "KtolinFinal"
 include(":app")
  

@@ -1,13 +1,13 @@
-package com.example.runas.Login
+package com.example.ktolinfinal.Login
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
-import com.example.runas.DBControler.Usuario
-import com.example.runas.DBControler.UsuarioDatabase
-import com.example.runas.R
+import com.example.ktolinfinal.DBControler.Usuario
+import com.example.ktolinfinal.DBControler.UsuarioDatabase
+import com.example.ktolinfinal.R
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext

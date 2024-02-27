@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <application
-        android:name=".Login.SharedApplication"
+        android:name="com.example.ktolinfinal.Login.SharedApplication"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -11,16 +11,25 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Runas"
+        android:theme="@style/Theme.KtolinFinal"
         tools:targetApi="31">
         <activity
-            android:name=".Login.Registro"
+            android:name="com.example.ktolinfinal.Ejercicio1FormularioActivity"
             android:exported="false" />
         <activity
-            android:name=".Login.Login"
+            android:name="com.example.ktolinfinal.Ejercicio1DetalleActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name="com.example.ktolinfinal.Ejercicio1Activity"
+            android:exported="false" />
+        <activity
+            android:name="com.example.ktolinfinal.Login.Registro"
+            android:exported="false" />
+        <activity
+            android:name="com.example.ktolinfinal.Login.Login"
+            android:exported="false" />
+        <activity
+            android:name="com.example.ktolinfinal.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

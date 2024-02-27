@@ -7,11 +7,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.runas"
+    namespace = "com.example.ktolinfinal"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.example.runas"
+        applicationId = "com.example.ktolinfinal"
         minSdk = 24
         targetSdk = 34
         versionCode = 1

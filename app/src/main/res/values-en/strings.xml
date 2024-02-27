@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Runas</string>
+    <string name="app_name">KtolinFinal</string>
+    <string name="anadir_contacto">Add contact</string>
+    <string name="edit">Edit</string>
+    <string name="delete">Delete</string>
+    <string name="back">Back</string>
+    <string name="registro">"Create user "</string>
     <string name="usuario">User</string>
     <string name="pass">Password</string>
     <string name="passAgain">Write the password, again</string>
     <string name="guardar">Keep</string>
     <string name="cancelar">Cancel</string>
-    <string name="registro">"Create user "</string>
 </resources>
