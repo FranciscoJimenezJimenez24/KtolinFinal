@@ -1,5 +1,8 @@
 package com.example.ktolinfinal.Login
 
+import android.content.pm.PackageManager
+import android.media.MediaPlayer
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -20,6 +23,7 @@ class Registro : AppCompatActivity() {
     lateinit var user: EditText
     lateinit var pass: EditText
     lateinit var passAgain: EditText
+    private var mediaPlayer: MediaPlayer? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,19 +49,48 @@ class Registro : AppCompatActivity() {
                     // Actualizar la interfaz de usuario en el hilo principal
                     withContext(Dispatchers.Main) {
                         if (exitoso) {
-                            showToast("Usuario insertado correctamente.")
-                            finish()
+                            if (checkSelfPermission(android.Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+                                // Si el permiso no se ha concedido, solicítalo
+                                requestPermissions(arrayOf(android.Manifest.permission.READ_EXTERNAL_STORAGE), 3)
+                            } else {
+                                // Ya se concedió el permiso, puedes acceder al archivo de audio
+                                showToast("Usuario insertado correctamente.")
+                                playAudioInsertCorrect()
+                                finish()
+                            }
+
                         } else {
                             showToast("Error al insertar el usuario.")
+                            if (checkSelfPermission(android.Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+                                // Si el permiso no se ha concedido, solicítalo
+                                requestPermissions(arrayOf(android.Manifest.permission.READ_EXTERNAL_STORAGE), 3)
+                            } else {
+                                // Ya se concedió el permiso, puedes acceder al archivo de audio
+                                playAudioInsertIncorrect()
+                            }
                         }
                     }
                 }
             } else {
                 showToast("Las contraseñas no coinciden.")
+                if (checkSelfPermission(android.Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+                    // Si el permiso no se ha concedido, solicítalo
+                    requestPermissions(arrayOf(android.Manifest.permission.READ_EXTERNAL_STORAGE), 3)
+                } else {
+                    // Ya se concedió el permiso, puedes acceder al archivo de audio
+                    playAudioInsertIncorrect()
+                }
             }
         }
 
         cancelar.setOnClickListener {
+            if (checkSelfPermission(android.Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+                // Si el permiso no se ha concedido, solicítalo
+                requestPermissions(arrayOf(android.Manifest.permission.READ_EXTERNAL_STORAGE), 3)
+            } else {
+                // Ya se concedió el permiso, puedes acceder al archivo de audio
+                playAudioBackLogin()
+            }
             if(!isFinishing){
                 finish()
             }
@@ -70,5 +103,29 @@ class Registro : AppCompatActivity() {
 
     private fun showToast(text:String){
         Toast.makeText(this, text, Toast.LENGTH_SHORT).show()
+    }
+
+    private fun playAudioBackLogin() {
+        val audioPath = "/sdcard/Download/handle-paper-foley-1-172688.mp3"
+        val audioUri: Uri = Uri.parse(audioPath)
+
+        mediaPlayer = MediaPlayer.create(this, audioUri)
+        mediaPlayer?.start()
+    }
+
+    private fun playAudioInsertIncorrect() {
+        val audioPath = "/sdcard/Download/error-126627.mp3"
+        val audioUri: Uri = Uri.parse(audioPath)
+
+        mediaPlayer = MediaPlayer.create(this, audioUri)
+        mediaPlayer?.start()
+    }
+
+    private fun playAudioInsertCorrect() {
+        val audioPath = "/sdcard/Download/coin-drop-39914.mp3"
+        val audioUri: Uri = Uri.parse(audioPath)
+
+        mediaPlayer = MediaPlayer.create(this, audioUri)
+        mediaPlayer?.start()
     }
 }

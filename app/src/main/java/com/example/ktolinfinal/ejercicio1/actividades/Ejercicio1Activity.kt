@@ -1,7 +1,10 @@
 package com.example.ktolinfinal
 
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.database.Cursor
+import android.media.MediaPlayer
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
@@ -22,6 +25,7 @@ class Ejercicio1Activity : AppCompatActivity() {
 
     private lateinit var mListView: ListView
     private lateinit var mTvListaVacia: TextView
+    private var mediaPlayer: MediaPlayer? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -69,9 +73,24 @@ class Ejercicio1Activity : AppCompatActivity() {
             val intent = Intent(this@Ejercicio1Activity, Ejercicio1DetalleActivity::class.java)
             intent.putExtra(Extra.NOTA_ID, notaId)
             startActivityForResult(intent, CODIGO_RESPUESTA_ACTIVIDAD)
+            if (checkSelfPermission(android.Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+                // Si el permiso no se ha concedido, solicítalo
+                requestPermissions(arrayOf(android.Manifest.permission.READ_EXTERNAL_STORAGE), 3)
+            } else {
+                // Ya se concedió el permiso, puedes acceder al archivo de audio
+                playAudioInfo()
+            }
         }
 
         updateVisibility()
+    }
+
+    private fun playAudioInfo() {
+        val audioPath = "/sdcard/Download/handle-paper-foley-1-172688.mp3"
+        val audioUri: Uri = Uri.parse(audioPath)
+
+        mediaPlayer = MediaPlayer.create(this, audioUri)
+        mediaPlayer?.start()
     }
 
     // Actualizar la visibilidad del listado. Si el listado está vacío mostramos un aviso.

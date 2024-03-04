@@ -1,5 +1,8 @@
 package com.example.ktolinfinal
 import android.content.Intent
+import android.content.pm.PackageManager
+import android.media.MediaPlayer
+import android.net.Uri
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
@@ -16,6 +19,7 @@ class Ejercicio1DetalleActivity : AppCompatActivity() {
 
     private lateinit var mDb: DataHelper
     private var mId: Long = -1
+    private var mediaPlayer: MediaPlayer? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,6 +51,13 @@ class Ejercicio1DetalleActivity : AppCompatActivity() {
                 intent.putExtra(Extra.NOTA_TITULO, nota.titulo)
                 intent.putExtra(Extra.NOTA_CONTENIDO, nota.contenido)
                 startActivityForResult(intent, CODIGO_RESPUESTA_ACTIVIDAD)
+                if (checkSelfPermission(android.Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+                    // Si el permiso no se ha concedido, solicítalo
+                    requestPermissions(arrayOf(android.Manifest.permission.READ_EXTERNAL_STORAGE), 3)
+                } else {
+                    // Ya se concedió el permiso, puedes acceder al archivo de audio
+                    playAudioEdit()
+                }
             } else {
                 returnResult("Error: nota no encontrada")
             }
@@ -58,6 +69,13 @@ class Ejercicio1DetalleActivity : AppCompatActivity() {
 
         findViewById<Button>(R.id.btnBack).setOnClickListener{
             onBackPressed()
+            if (checkSelfPermission(android.Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+                // Si el permiso no se ha concedido, solicítalo
+                requestPermissions(arrayOf(android.Manifest.permission.READ_EXTERNAL_STORAGE), 3)
+            } else {
+                // Ya se concedió el permiso, puedes acceder al archivo de audio
+                playAudioBack()
+            }
         }
     }
 
@@ -67,6 +85,22 @@ class Ejercicio1DetalleActivity : AppCompatActivity() {
             updateInterface()
             setResult(RESULT_OK)
         }
+    }
+
+    private fun playAudioEdit() {
+        val audioPath = "/sdcard/Download/handle-paper-foley-1-172688.mp3"
+        val audioUri: Uri = Uri.parse(audioPath)
+
+        mediaPlayer = MediaPlayer.create(this, audioUri)
+        mediaPlayer?.start()
+    }
+
+    private fun playAudioBack() {
+        val audioPath = "/sdcard/Download/handle-paper-foley-1-172688.mp3"
+        val audioUri: Uri = Uri.parse(audioPath)
+
+        mediaPlayer = MediaPlayer.create(this, audioUri)
+        mediaPlayer?.start()
     }
 
     private fun updateInterface() {

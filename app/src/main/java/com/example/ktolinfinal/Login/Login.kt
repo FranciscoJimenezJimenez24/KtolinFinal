@@ -1,6 +1,9 @@
 package com.example.ktolinfinal.Login
 
 import android.content.Intent
+import android.content.pm.PackageManager
+import android.media.MediaPlayer
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
@@ -22,6 +25,7 @@ class Login : AppCompatActivity() {
     lateinit var checkRememberUser: CheckBox
     lateinit var btnLogin: Button
     lateinit var btnRegistro: Button
+    private var mediaPlayer: MediaPlayer? = null
 
 
 
@@ -40,7 +44,7 @@ class Login : AppCompatActivity() {
         // para cargar los datos guardados del fichero de variables compartidas
         getValuesFromShared()
 
-        btnLogin.setOnClickListener{
+        btnLogin.setOnClickListener {
             onClickLogin()
 
             // Utiliza un coroutine para llamar a checkUsuario
@@ -49,26 +53,74 @@ class Login : AppCompatActivity() {
 
                 // Verificar si el usuario existe
                 if (id != null) {
-                    showToast("¡Inicio de sesión exitoso!"+id)
-                    // startNewActivity()
+                    showToast("¡Inicio de sesión exitoso! $id")
+                    if (checkSelfPermission(android.Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+                        // Si el permiso no se ha concedido, solicítalo
+                        requestPermissions(arrayOf(android.Manifest.permission.READ_EXTERNAL_STORAGE), 3)
+                    } else {
+                        // Ya se concedió el permiso, puedes acceder al archivo de audio
+                        playAudioLoginCorrect()
+                        // Luego, inicia la nueva actividad
+                        val intent = Intent(this@Login, Ejercicio1Activity::class.java)
+                        startActivity(intent)
+                    }
                 } else {
                     showToast("Usuario o contraseña incorrectos")
+                    if (checkSelfPermission(android.Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+                        // Si el permiso no se ha concedido, solicítalo
+                        requestPermissions(arrayOf(android.Manifest.permission.READ_EXTERNAL_STORAGE), 3)
+                    } else {
+                        // Ya se concedió el permiso, puedes acceder al archivo de audio
+                        playAudioLoginIncorrect()
+
+                    }
                 }
             }
-            val intent:Intent=Intent(this,Ejercicio1Activity::class.java);
-            startActivity(intent)
+
 
         }
 
         btnRegistro.setOnClickListener {
-            val intentBtn = Intent(this, Registro::class.java)
-            startActivity(intentBtn)
+            if (checkSelfPermission(android.Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+                // Si el permiso no se ha concedido, solicítalo
+                requestPermissions(arrayOf(android.Manifest.permission.READ_EXTERNAL_STORAGE), 3)
+            } else {
+                // Ya se concedió el permiso, puedes acceder al archivo de audio
+                playAudioRegistration()
+                val intentBtn = Intent(this, Registro::class.java)
+                startActivity(intentBtn)
+            }
+
         }
     }
 
     private fun getValuesFromShared(){
         editTextUser.text = SharedApplication.preferences.user.toEditable()
         editTextPass.text = SharedApplication.preferences.pass.toEditable()
+    }
+
+    private fun playAudioLoginIncorrect() {
+        val audioPath = "/sdcard/Download/error-126627.mp3"
+        val audioUri: Uri = Uri.parse(audioPath)
+
+        mediaPlayer = MediaPlayer.create(this, audioUri)
+        mediaPlayer?.start()
+    }
+
+    private fun playAudioLoginCorrect() {
+        val audioPath = "/sdcard/Download/coin-drop-39914.mp3"
+        val audioUri: Uri = Uri.parse(audioPath)
+
+        mediaPlayer = MediaPlayer.create(this, audioUri)
+        mediaPlayer?.start()
+    }
+
+    private fun playAudioRegistration() {
+        val audioPath = "/sdcard/Download/handle-paper-foley-1-172688.mp3"
+        val audioUri: Uri = Uri.parse(audioPath)
+
+        mediaPlayer = MediaPlayer.create(this, audioUri)
+        mediaPlayer?.start()
     }
 
     private fun onClickLogin(){
