@@ -25,6 +25,7 @@ class Login : AppCompatActivity() {
     lateinit var checkRememberUser: CheckBox
     lateinit var btnLogin: Button
     lateinit var btnRegistro: Button
+    lateinit var btnMap: Button
     private var mediaPlayer: MediaPlayer? = null
 
 
@@ -40,6 +41,7 @@ class Login : AppCompatActivity() {
         checkRememberUser = findViewById(R.id.checkRememberUser)
         btnLogin = findViewById(R.id.btnLogin)
         btnRegistro = findViewById(R.id.btnRegistro)
+        btnMap = findViewById(R.id.btnMap)
 
         // para cargar los datos guardados del fichero de variables compartidas
         getValuesFromShared()
@@ -49,14 +51,18 @@ class Login : AppCompatActivity() {
 
             // Utiliza un coroutine para llamar a checkUsuario
             CoroutineScope(Dispatchers.Main).launch {
-                val id = database.usuarioDao().checkUsuario(editTextUser.text.toString(), editTextPass.text.toString())
+                val id = database.usuarioDao()
+                    .checkUsuario(editTextUser.text.toString(), editTextPass.text.toString())
 
                 // Verificar si el usuario existe
                 if (id != null) {
                     showToast("¡Inicio de sesión exitoso! $id")
                     if (checkSelfPermission(android.Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
                         // Si el permiso no se ha concedido, solicítalo
-                        requestPermissions(arrayOf(android.Manifest.permission.READ_EXTERNAL_STORAGE), 3)
+                        requestPermissions(
+                            arrayOf(android.Manifest.permission.READ_EXTERNAL_STORAGE),
+                            3
+                        )
                     } else {
                         // Ya se concedió el permiso, puedes acceder al archivo de audio
                         playAudioLoginCorrect()
@@ -68,7 +74,10 @@ class Login : AppCompatActivity() {
                     showToast("Usuario o contraseña incorrectos")
                     if (checkSelfPermission(android.Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
                         // Si el permiso no se ha concedido, solicítalo
-                        requestPermissions(arrayOf(android.Manifest.permission.READ_EXTERNAL_STORAGE), 3)
+                        requestPermissions(
+                            arrayOf(android.Manifest.permission.READ_EXTERNAL_STORAGE),
+                            3
+                        )
                     } else {
                         // Ya se concedió el permiso, puedes acceder al archivo de audio
                         playAudioLoginIncorrect()
@@ -76,8 +85,6 @@ class Login : AppCompatActivity() {
                     }
                 }
             }
-
-
         }
 
         btnRegistro.setOnClickListener {
@@ -92,6 +99,26 @@ class Login : AppCompatActivity() {
             }
 
         }
+
+        btnMap.setOnClickListener {
+            if (checkSelfPermission(android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED ||
+                checkSelfPermission(android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED
+            ) {
+                // Si los permisos no se han concedido, solicítalos
+                requestPermissions(
+                    arrayOf(
+                        android.Manifest.permission.ACCESS_FINE_LOCATION,
+                        android.Manifest.permission.ACCESS_COARSE_LOCATION
+                    ),
+                    1
+                )
+            } else {
+                // Si los permisos están concedidos, abre el mapa y muestra la ubicación actual
+                val intent = Intent(Intent.ACTION_VIEW, Uri.parse("geo:0,0?q=IES+Playamar"))
+                startActivity(intent)
+            }
+        }
+
     }
 
     private fun getValuesFromShared(){

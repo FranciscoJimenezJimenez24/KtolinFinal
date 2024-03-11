@@ -11,9 +11,9 @@ import android.widget.ListView
 import android.widget.SimpleCursorAdapter
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import ejercicios_android.sqlite.R
+import com.example.ktolinfinal.Extra
+import com.example.ktolinfinal.R
 import ejercicios_android.sqlite.ejercicio1.DataHelper
-import ejercicios_android.sqlite.Extra
 import ejercicios_android.sqlite.ejercicio1.Nota
 
 class Ejercicio1Activity : AppCompatActivity() {
