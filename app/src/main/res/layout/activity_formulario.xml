@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ejercicio1.actividades.Ejercicio1FormularioActivity">
+    tools:context=".Ejercicio1FormularioActivity">
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayoutTitulo"
@@ -23,7 +23,7 @@
             android:id="@+id/etTitulo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Título:" />
+            android:hint="@string/titulo" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -43,7 +43,7 @@
             android:id="@+id/etContenido"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Contenido:" />
+            android:hint="@string/contenido" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
@@ -55,7 +55,7 @@
         android:layout_marginTop="32dp"
         android:layout_marginEnd="12dp"
         android:layout_marginRight="12dp"
-        android:text="Cancelar"
+        android:text="@string/cancelar"
         app:layout_constraintEnd_toStartOf="@+id/btnGuardar"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintHorizontal_chainStyle="spread"
@@ -70,7 +70,7 @@
         android:layout_marginLeft="12dp"
         android:layout_marginEnd="24dp"
         android:layout_marginRight="24dp"
-        android:text="Guardar"
+        android:text="@string/guardar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/btnCancelar"

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">KtolinFinal</string>
-    <string name="anadir_contacto">Add contact</string>
+    <string name="anadir">Add</string>
     <string name="edit">Edit</string>
     <string name="delete">Delete</string>
     <string name="back">Back</string>
@@ -12,4 +12,9 @@
     <string name="guardar">Keep</string>
     <string name="cancelar">Cancel</string>
     <string name="google_maps">Google Maps</string>
+    <string name="detalle_nota">Detail of the note</string>
+    <string name="titulo">Title</string>
+    <string name="contenido">Content</string>
+    <string name="login">Login</string>
+    <string name="remember_user">Remember User</string>
 </resources>

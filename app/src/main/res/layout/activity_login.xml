@@ -11,7 +11,7 @@
         android:id="@+id/editTextUser"
         android:layout_width="match_parent"
         android:layout_height="48dp"
-        android:hint="Usuario"
+        android:hint="@string/usuario"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -26,7 +26,7 @@
         android:layout_height="48dp"
         android:layout_marginTop="65dp"
         android:layout_marginBottom="536dp"
-        android:hint="Contraseña"
+        android:hint="@string/pass"
         android:inputType="textPassword"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -40,7 +40,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="65dp"
         android:layout_marginBottom="484dp"
-        android:text="Recordar usuario"
+        android:text="@string/remember_user"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -55,7 +55,7 @@
         android:layout_marginTop="65dp"
         android:layout_marginBottom="484dp"
         android:background="@color/Lila"
-        android:text="Login"
+        android:text="@string/login"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -83,6 +83,14 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnRegistro"
         tools:layout_editor_absoluteX="119dp" />
+
+    <ImageView
+        android:id="@+id/my_image_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/pablito"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline"

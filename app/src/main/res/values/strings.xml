@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">KtolinFinal</string>
-    <string name="anadir_contacto">Añadir contacto</string>
+    <string name="anadir">Añadir</string>
     <string name="edit">Editar</string>
     <string name="delete">Eliminar</string>
     <string name="back">Volver</string>
@@ -11,4 +11,9 @@
     <string name="cancelar">Cancelar</string>
     <string name="registro">Crear usuario</string>
     <string name="google_maps">Google Maps</string>
+    <string name="detalle_nota">Detalle de la nota</string>
+    <string name="titulo">Título</string>
+    <string name="contenido">Contenido</string>
+    <string name="login">Login</string>
+    <string name="remember_user">Recordar usuario</string>
 </resources>

@@ -12,7 +12,7 @@ import android.widget.CheckBox
 import android.widget.EditText
 import android.widget.Toast
 import com.example.ktolinfinal.DBControler.UsuarioDatabase
-import com.example.ktolinfinal.Ejercicio1Activity
+import com.example.ktolinfinal.ejercicio1.actividades.Ejercicio1Activity
 import com.example.ktolinfinal.R
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers

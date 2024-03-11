@@ -98,7 +98,7 @@ class Ejercicio1Activity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         super.onOptionsItemSelected(item)
-        if (item.itemId == R.id.anadir_nota) {
+        if (item.itemId == R.id.nueva_nota) {
             val intent = Intent(this@Ejercicio1Activity, Ejercicio1FormularioActivity::class.java)
             startActivityForResult(intent, CODIGO_RESPUESTA_ACTIVIDAD)
             return true

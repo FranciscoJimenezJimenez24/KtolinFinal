@@ -1,4 +1,4 @@
-package com.example.ktolinfinal
+package com.example.ktolinfinal.ejercicio1.actividades
 
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -10,10 +10,17 @@ import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.widget.Button
 import android.widget.ListView
 import android.widget.SimpleCursorAdapter
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import com.example.ktolinfinal.DataHelper
+import com.example.ktolinfinal.Ejercicio1DetalleActivity
+import com.example.ktolinfinal.Ejercicio1FormularioActivity
+import com.example.ktolinfinal.Extra
+import com.example.ktolinfinal.Nota
+import com.example.ktolinfinal.R
 
 class Ejercicio1Activity : AppCompatActivity() {
     private val INSERTAR_DATOS_PRUEBA = true
@@ -35,6 +42,7 @@ class Ejercicio1Activity : AppCompatActivity() {
         mTvListaVacia = findViewById(R.id.emptyView)
         mTvListaVacia.visibility = View.GONE
 
+
         // Instanciamos el DataHelper para el acceso a la base de datos
         mDb = DataHelper(this)
 
@@ -42,7 +50,8 @@ class Ejercicio1Activity : AppCompatActivity() {
         if(INSERTAR_DATOS_PRUEBA) {
             mDb.deleteAll()
             for(i in 1..5) {
-                mDb.insert(Nota(
+                mDb.insert(
+                    Nota(
                     -1,
                     "Nota de ejemplo " + String.format("%02d", i),
                     "Contenido de la nota $i",
@@ -104,7 +113,7 @@ class Ejercicio1Activity : AppCompatActivity() {
         }
     }
 
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
         super.onCreateOptionsMenu(menu)
         // Asociamos el menú mediante el fichero de recurso
         menuInflater.inflate(R.menu.listado_notas_menu, menu)
@@ -113,7 +122,7 @@ class Ejercicio1Activity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         super.onOptionsItemSelected(item)
-        if (item.itemId == R.id.anadir_nota) {
+        if (item.itemId == R.id.nueva_nota) {
             val intent = Intent(this@Ejercicio1Activity, Ejercicio1FormularioActivity::class.java)
             startActivityForResult(intent, CODIGO_RESPUESTA_ACTIVIDAD)
             return true
